@@ -1,7 +1,0 @@
-Added Component: Designator=?(PCBComponent_1)
-Added Pin To Net: NetName=3.5mm Pin=3.5mm-1
-Added Pin To Net: NetName=3.5mm Pin=3.5mm-2
-Added Pin To Net: NetName=3.5mm Pin=?-1
-Added Pin To Net: NetName=3.5mm Pin=?-3
-Added Net: Name=3.5mm
-Added Class: Name=Sheet2
