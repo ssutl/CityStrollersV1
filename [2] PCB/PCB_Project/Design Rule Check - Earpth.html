@@ -1,0 +1,378 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD23\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">06/12/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:08:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc" class="file"><acronym title="C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc">C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">26</td></tr>
+</table>
+</td>
+</table><a name="IDFZZD0YBRJV5KJFBEXVDUSXBKTCWIUIONYE3KFCNU1LBY4UR0TIFM"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5KOSFDCFKE3LNVE3ABEMSAYXKPN1HDGAYS1YY5SYMNB2NOA4YDE">Clearance Constraint (Gap=0.508mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRP5P2HNF3BE0O0HH5KDU3OZ4CFNEFFFW4YAQCEMVOI225DXX1PVL">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNE4CKTS5THSXG5R3CJ3WYMAUSM2JVHYNZ4VV5FM0TLS14NABMTYK">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">26</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4FD3Q4Q3OJFCPEGW445CMOME3EWH2Z2CPOYK0LFPJLDI2440GMIB">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSHFLGVOTJGXBMXMNUVEDCGA3WJHEZVXDB44F3SBBHNGN2ZBEO5XL">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDK1XYOW2TL4YWMH4DSYYJO2X2KMWGRKEEBF1FLDG0GSY4SWTRHVRK">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">26</td>
+</tr>
+</table><br><a name="IDNE4CKTS5THSXG5R3CJ3WYMAUSM2JVHYNZ4VV5FM0TLS14NABMTYK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10425mil|Location1.Y=4515mil|Location2.Y=12645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10425mil|Location1.Y=4515mil|Location2.Y=12645mil|Absolute=True">Un-Routed Net Constraint: Track (0mm,0mm)(0mm,206.248mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10425mil|Location1.Y=4515mil|Location2.Y=6985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10425mil|Location1.Y=4515mil|Location2.Y=6985mil|Absolute=True">Un-Routed Net Constraint: Track (0mm,0mm)(0mm,62.484mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10925mil|Location1.Y=4515mil|Location2.Y=4525mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10925mil|Location1.Y=4515mil|Location2.Y=4525mil|Absolute=True">Un-Routed Net Constraint: Track (0mm,0mm)(12.7mm,0mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=4525mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=4525mil|Absolute=True">Un-Routed Net Constraint: Track (0mm,0mm)(272.796mm,0mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=21165mil|Location1.Y=12635mil|Location2.Y=12645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=21165mil|Location1.Y=12635mil|Location2.Y=12645mil|Absolute=True">Un-Routed Net Constraint: Track (0mm,206.248mm)(272.796mm,206.248mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=21165mil|Location1.Y=12635mil|Location2.Y=12645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=21165mil|Location1.Y=12635mil|Location2.Y=12645mil|Absolute=True">Un-Routed Net Constraint: Track (0mm,206.248mm)(272.796mm,206.248mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10425mil|Location1.Y=5535mil|Location2.Y=12645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10415mil|Location2.X=10425mil|Location1.Y=5535mil|Location2.Y=12645mil|Absolute=True">Un-Routed Net Constraint: Track (0mm,25.908mm)(0mm,206.248mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10375mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=3405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10375mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=3405mil|Absolute=True">Un-Routed Net Constraint: Track (-1.016mm,-28.448mm)(288.544mm,-28.448mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=21785mil|Location1.Y=13395mil|Location2.Y=13405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=21785mil|Location1.Y=13395mil|Location2.Y=13405mil|Absolute=True">Un-Routed Net Constraint: Track (-15.748mm,225.552mm)(288.544mm,225.552mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=21785mil|Location1.Y=13395mil|Location2.Y=13405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=21785mil|Location1.Y=13395mil|Location2.Y=13405mil|Absolute=True">Un-Routed Net Constraint: Track (-15.748mm,225.552mm)(288.544mm,225.552mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=9805mil|Location1.Y=5475mil|Location2.Y=13405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=9805mil|Location1.Y=5475mil|Location2.Y=13405mil|Absolute=True">Un-Routed Net Constraint: Track (-15.748mm,24.384mm)(-15.748mm,225.552mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=10425mil|Location1.Y=3395mil|Location2.Y=3405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=10425mil|Location1.Y=3395mil|Location2.Y=3405mil|Absolute=True">Un-Routed Net Constraint: Track (-15.748mm,-28.448mm)(0mm,-28.448mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=9805mil|Location1.Y=3395mil|Location2.Y=13405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=9805mil|Location1.Y=3395mil|Location2.Y=13405mil|Absolute=True">Un-Routed Net Constraint: Track (-15.748mm,-28.448mm)(-15.748mm,225.552mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=9805mil|Location1.Y=3395mil|Location2.Y=5565mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=9805mil|Location1.Y=3395mil|Location2.Y=5565mil|Absolute=True">Un-Routed Net Constraint: Track (-15.748mm,-28.448mm)(-15.748mm,26.416mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=3405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9795mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=3405mil|Absolute=True">Un-Routed Net Constraint: Track (-15.748mm,-28.448mm)(288.544mm,-28.448mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16515mil|Location2.X=16625mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16515mil|Location2.X=16625mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True">Un-Routed Net Constraint: Track (154.94mm,-2.54mm)(157.48mm,-5.08mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16615mil|Location2.X=16625mil|Location1.Y=4315mil|Location2.Y=4465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16615mil|Location2.X=16625mil|Location1.Y=4315mil|Location2.Y=4465mil|Absolute=True">Un-Routed Net Constraint: Track (157.48mm,-5.08mm)(157.48mm,-1.524mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16615mil|Location2.X=16725mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=16615mil|Location2.X=16725mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True">Un-Routed Net Constraint: Track (157.48mm,-5.08mm)(160.02mm,-2.54mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21155mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=12645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21155mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=12645mil|Absolute=True">Un-Routed Net Constraint: Track (272.796mm,0mm)(272.796mm,206.248mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21155mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=12645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21155mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=12645mil|Absolute=True">Un-Routed Net Constraint: Track (272.796mm,0mm)(272.796mm,206.248mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21775mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=13405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21775mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=13405mil|Absolute=True">Un-Routed Net Constraint: Track (288.544mm,-28.448mm)(288.544mm,225.552mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21775mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=13405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=21775mil|Location2.X=21785mil|Location1.Y=3395mil|Location2.Y=13405mil|Absolute=True">Un-Routed Net Constraint: Track (288.544mm,-28.448mm)(288.544mm,225.552mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10795mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=4525mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10795mil|Location2.X=21165mil|Location1.Y=4515mil|Location2.Y=4525mil|Absolute=True">Un-Routed Net Constraint: Track (9.652mm,0mm)(272.796mm,0mm) on BottomLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14115mil|Location2.X=14225mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14115mil|Location2.X=14225mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True">Un-Routed Net Constraint: Track (93.98mm,-2.54mm)(96.52mm,-5.08mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14215mil|Location2.X=14225mil|Location1.Y=4315mil|Location2.Y=4465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14215mil|Location2.X=14225mil|Location1.Y=4315mil|Location2.Y=4465mil|Absolute=True">Un-Routed Net Constraint: Track (96.52mm,-5.08mm)(96.52mm,-1.524mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14215mil|Location2.X=14325mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Shay\Desktop\Individual project\PCB\PCB_Project\Earpth.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14215mil|Location2.X=14325mil|Location1.Y=4315mil|Location2.Y=4425mil|Absolute=True">Un-Routed Net Constraint: Track (96.52mm,-5.08mm)(99.06mm,-2.54mm) on TopLayer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

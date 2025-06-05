@@ -1,0 +1,4 @@
+Added Component: Designator=3.5mm_Left(PCBComponent_1)
+Added Pin To Net: NetName=3.5mm_Left Pin=3.5mm_Left-1
+Added Pin To Net: NetName=3.5mm_Left Pin=3.5mm_Left-2
+Added Member To Class: ClassName=LeftEar Member=Component 3.5mm_Left PJ-320A

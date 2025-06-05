@@ -1,0 +1,4 @@
+Change Component Designator: OldDesignator=? NewDesignator=3.5mm_Right
+Added Component: Designator=3.5mm(PCBComponent_1)
+Change Class Name : Old Net Name=Sheet2 New Net Name=RightEar
+Added Class: Name=LeftEar
